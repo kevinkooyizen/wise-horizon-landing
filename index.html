@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wise Horizon - Private Investment Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            background: #000000;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #0a192f 0%, #1e3c72 50%, #2a5298 100%);
+            color: white;
+            padding: 140px 20px 100px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(42, 82, 152, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 60, 114, 0.3) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(30px, -30px);
+            }
+
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .hero h1 {
+            position: relative;
+            font-size: 4em;
+            font-weight: 200;
+            margin-bottom: 20px;
+            letter-spacing: 12px;
+            z-index: 1;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero .tagline {
+            position: relative;
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            z-index: 1;
+        }
+
+        .hero .subtitle {
+            position: relative;
+            font-size: 1.1em;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 900px;
+            margin: 0 auto;
+            z-index: 1;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .parallax-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(180deg, #000000 0%, #0a192f 50%, #000000 100%);
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: floatOrb 15s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: #1e3c72;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: #2a5298;
+            top: 50%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .orb3 {
+            width: 350px;
+            height: 350px;
+            background: #1e3c72;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes floatOrb {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+
+        .section {
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: 2.8em;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 900px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        .value-prop {
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 80px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(30, 60, 114, 0.3);
+        }
+
+        .value-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+        .value-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .value-card p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+
+        .verticals-section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verticals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .vertical-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vertical-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2a5298, #64b5f6);
+            transition: width 0.4s ease;
+        }
+
+        .vertical-card:hover::before {
+            width: 100%;
+            opacity: 0.1;
+        }
+
+        .vertical-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 40px rgba(42, 82, 152, 0.4);
+        }
+
+        .vertical-card h3 {
+            color: #ffffff;
+            font-size: 1.4em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .vertical-card .vertical-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .vertical-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        .privileges-section {
+            background: rgba(10, 25, 47, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 80px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .privileges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .privilege-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .privilege-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(42, 82, 152, 0.3);
+        }
+
+        .privilege-card h4 {
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 400;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .privilege-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .journey-section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .journey-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: 300;
+            color: white;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(42, 82, 152, 0.4);
+        }
+
+        .journey-step h4 {
+            color: #ffffff;
+            font-size: 1.3em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .journey-step p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .opportunities-section {
+            padding: 80px 20px;
+            background: rgba(10, 25, 47, 0.3);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .opportunity-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .opportunity-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(42, 82, 152, 0.3), transparent);
+            border-radius: 0 15px 0 0;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(42, 82, 152, 0.5);
+            border-color: rgba(42, 82, 152, 0.5);
+        }
+
+        .opportunity-card h4 {
+            color: #ffffff;
+            font-size: 1.3em;
+            font-weight: 400;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .opportunity-type {
+            color: rgba(100, 181, 246, 0.9);
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .opportunity-details {
+            margin-bottom: 15px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9em;
+        }
+
+        .detail-row span:first-child {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .detail-row span:last-child {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        .opportunity-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .world-map-section {
+            background: transparent;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .map-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 60px auto;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(30, 60, 114, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(42, 82, 152, 0.2) 0%, transparent 50%);
+        }
+
+        .map-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #2a5298, #64b5f6);
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(42, 82, 152, 0.8), 0 0 40px rgba(42, 82, 152, 0.4);
+            animation: pulse 2s infinite, glow 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(42, 82, 152, 0.8), 0 0 40px rgba(42, 82, 152, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(42, 82, 152, 1), 0 0 60px rgba(42, 82, 152, 0.6);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .map-dot::after {
+            content: attr(data-location);
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: 400;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dot-singapore {
+            top: 58%;
+            left: 72%;
+        }
+
+        .dot-london {
+            top: 35%;
+            left: 48%;
+        }
+
+        .dot-newyork {
+            top: 38%;
+            left: 22%;
+        }
+
+        .dot-middleeast {
+            top: 45%;
+            left: 58%;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .cta-section h2 {
+            font-size: 2.8em;
+            font-weight: 200;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .cta-contact {
+            font-size: 1.3em;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .cta-contact a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .cta-contact a:hover {
+            border-bottom-color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffffff, #e0e7ff);
+            color: #1e3c72;
+            padding: 18px 50px;
+            font-size: 1.1em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(42, 82, 152, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            opacity: 0.5;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 0.8em;
+            line-height: 1.6;
+            opacity: 0.4;
+        }
+
+        .parallax-section {
+            transform-style: preserve-3d;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+                letter-spacing: 6px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+
+            .floating-orb {
+                display: none;
+            }
+
+            .verticals-grid,
+            .opportunities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+
+            const heroGrid = document.querySelector('.hero-grid');
+            if (heroGrid) {
+                heroGrid.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+
+            document.querySelectorAll('.value-card, .vertical-card, .privilege-card, .journey-step, .opportunity-card').forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (cardTop < windowHeight * 0.8) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.value-card, .vertical-card, .privilege-card, .journey-step, .opportunity-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease ' + (index * 0.1) + 's';
+            });
+
+            window.dispatchEvent(new Event('scroll'));
+        });
+    </script>
+</head>
+
+<body>
+    <div class="parallax-bg">
+        <div class="floating-orb orb1"></div>
+        <div class="floating-orb orb2"></div>
+        <div class="floating-orb orb3"></div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-grid"></div>
+        <h1>WISE HORIZON</h1>
+        <p class="tagline">The Exclusive Gateway to Strategic Private Investment</p>
+        <p class="subtitle">Built for a curated community of selected investors, Wise Horizon combines access,
+            alignment, and execution excellence across the most promising sectors of tomorrow</p>
+    </div>
+
+    <div class="value-prop">
+        <div class="section-title">Preferential Access to the Future of Private Investment</div>
+        <div class="section-subtitle">
+            Wise Horizon is an invitation-only private investment club designed exclusively for high net worth
+            individuals and family offices. Members become part of an insider network shaping the next generation of
+            private markets through early-stage access to high-impact fund launches, strategic acquisitions, and
+            co-investment vehicles.
+        </div>
+        <div class="value-grid">
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Priority Deal Flow</h3>
+                <p>Early access to all opportunities before they reach broader markets</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💎</div>
+                <h3>Strategic Diversification</h3>
+                <p>Exposure to high-growth sectors through multi-strategy fund platform</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Co-Investment Privileges</h3>
+                <p>Join selected direct transactions alongside experienced partners</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Preferential Economics</h3>
+                <p>Reduced fees and enhanced carry structures for members</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container parallax-section">
+        <div class="verticals-section">
+            <h2 class="section-title">Investment Themes</h2>
+            <p class="section-subtitle">
+                At the core of Wise Horizon sits a multi-strategy fund platform, granting exposure across all verticals.
+                Each vertical is led by an experienced team and benefits from institutional infrastructure, legal
+                framework, and professional governance.
+            </p>
+            <div class="verticals-grid">
+                <div class="vertical-card">
+                    <h3>Wise Tech</h3>
+                    <p class="vertical-subtitle">AI & Digital Assets</p>
+                    <p>Early-stage and growth equity investments in frontier AI companies, digital infrastructure, and
+                        tokenization enablers with proprietary deal sourcing.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>Wise Estates</h3>
+                    <p class="vertical-subtitle">Real Estate</p>
+                    <p>Strategic real estate opportunities including luxury hospitality redevelopment and healthcare
+                        property repositioning across prime global markets.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>Wise Planet</h3>
+                    <p class="vertical-subtitle">Green Infrastructure</p>
+                    <p>Sustainable infrastructure investments in EV charging networks, solar integration, and green
+                        Bitcoin mining powered by renewable energy.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>Wise Sports</h3>
+                    <p class="vertical-subtitle">Sports & Media</p>
+                    <p>Investment opportunities in sports franchises, media rights, and entertainment assets with strong
+                        growth potential and brand value.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>Wise Opportunities</h3>
+                    <p class="vertical-subtitle">Special Situations</p>
+                    <p>Acquiring fundamentally sound but distressed European SMEs, replacing overleveraged structures to
+                        unlock long-term value through strategic repositioning.</p>
+                </div>
+                <div class="vertical-card">
+                    <h3>Wise Ventures</h3>
+                    <p class="vertical-subtitle">Direct Deal Access</p>
+                    <p>Private deals across start-ups, growth equity, private credit, real assets, tokenized
+                        investments, and collectibles. Every opportunity is pre-screened and professionally executed.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="privileges-section">
+        <div class="section-title">Member Privileges</div>
+        <div class="section-subtitle">
+            Exclusive benefits reserved for our inner circle of long-term partners
+        </div>
+        <div class="privileges-grid">
+            <div class="privilege-card">
+                <h4>Co-Investment Opportunities</h4>
+                <p>Direct access to strategic M&A, pre-IPO ventures, and off-market transactions</p>
+            </div>
+            <div class="privilege-card">
+                <h4>Strategic Diversification</h4>
+                <p>Exposure to high-growth sectors through our multi-strategy platform</p>
+            </div>
+            <div class="privilege-card">
+                <h4>Preferential Economics</h4>
+                <p>Reduced fees and enhanced carry structures exclusive to members</p>
+            </div>
+            <div class="privilege-card">
+                <h4>Priority Deal Flow</h4>
+                <p>Early access to all opportunities before broader distribution</p>
+            </div>
+            <div class="privilege-card">
+                <h4>Co-Investment Privileges</h4>
+                <p>Join selected direct transactions with institutional backing</p>
+            </div>
+            <div class="privilege-card">
+                <h4>Institutional Infrastructure</h4>
+                <p>SPVs, custody, and comprehensive reporting included</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container parallax-section">
+        <div class="journey-section">
+            <h2 class="section-title">Your Journey with Wise Horizon</h2>
+            <p class="section-subtitle">
+                Participation is optional. Access is exclusive. Membership is invitation-only and designed for investors
+                who pursue access, impact, and strategic growth.
+            </p>
+            <div class="journey-steps">
+                <div class="journey-step">
+                    <div class="step-number">1</div>
+                    <h4>Confirm Interest</h4>
+                    <p>Express your interest to become a member and join our exclusive community</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">2</div>
+                    <h4>Receive Early Access</h4>
+                    <p>Get priority access to curated deal materials and investment opportunities</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">3</div>
+                    <h4>Evaluate</h4>
+                    <p>Review opportunities at your own pace with comprehensive documentation</p>
+                </div>
+                <div class="journey-step">
+                    <div class="step-number">4</div>
+                    <h4>Decide & Invest</h4>
+                    <p>Participate in deals that align with your vision—no obligation to invest</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="opportunities-section">
+        <div class="section-title">Selected Fund Opportunities</div>
+        <div class="section-subtitle">
+            Current fund launches accessible to Wise Horizon members
+        </div>
+        <div class="opportunities-grid">
+            <div class="opportunity-card">
+                <h4>New Frontier Technologies Fund</h4>
+                <p class="opportunity-type">Venture/Growth Capital – AI & Tokenisation</p>
+                <div class="opportunity-details">
+                    <div class="detail-row">
+                        <span>Jurisdiction</span>
+                        <span>Cayman Islands</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Target AUM</span>
+                        <span>USD 100M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Status</span>
+                        <span>Seed Funding</span>
+                    </div>
+                </div>
+                <p>Early-stage and growth equity investments in frontier AI companies, digital infrastructure, and
+                    tokenisation enablers with proprietary deal sourcing.</p>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>EV Charging Infrastructure Funds</h4>
+                <p class="opportunity-type">Sustainable Infrastructure – EV & Solar</p>
+                <div class="opportunity-details">
+                    <div class="detail-row">
+                        <span>Jurisdiction</span>
+                        <span>ADGM, Abu Dhabi</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Target AUM</span>
+                        <span>USD 200M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Status</span>
+                        <span>In Development</span>
+                    </div>
+                </div>
+                <p>Build and operate EV charging networks in high-growth markets with on-site solar integration for
+                    stable cash flows across passenger and fleet segments.</p>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>Green Bitcoin Mining Fund</h4>
+                <p class="opportunity-type">Green Bitcoin Mining</p>
+                <div class="opportunity-details">
+                    <div class="detail-row">
+                        <span>Jurisdiction</span>
+                        <span>ADGM, Abu Dhabi</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Target AUM</span>
+                        <span>USD 800M (phased)</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Status</span>
+                        <span>In Development</span>
+                    </div>
+                </div>
+                <p>Off-grid, tokenised Bitcoin mining powered by solar, battery storage, and biofuel/hydrogen. 24/7
+                    net-zero power with carbon credit upside.</p>
+            </div>
+
+            <div class="opportunity-card">
+                <h4>Distressed Asset Fund</h4>
+                <p class="opportunity-type">Private Equity – Special Situations</p>
+                <div class="opportunity-details">
+                    <div class="detail-row">
+                        <span>Jurisdiction</span>
+                        <span>ADGM, Abu Dhabi</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Target AUM</span>
+                        <span>USD 100M</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>Status</span>
+                        <span>In Development</span>
+                    </div>
+                </div>
+                <p>Acquiring fundamentally sound but distressed European SMEs, replacing overleveraged structures to
+                    unlock long-term value with proprietary deal pipeline.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container parallax-section">
+        <div class="section" style="margin-top: 40px;">
+            <h2 class="section-title">Selected Club Deals</h2>
+            <p class="section-subtitle">
+                Direct investment opportunities via Wise Ventures - pre-screened, structured, and professionally
+                executed
+            </p>
+            <div class="opportunities-grid">
+                <div class="opportunity-card">
+                    <h4>Oceanfront Luxury Hotel</h4>
+                    <p class="opportunity-type">Real Estate – Luxury Hospitality</p>
+                    <div class="opportunity-details">
+                        <div class="detail-row">
+                            <span>Location</span>
+                            <span>California, US</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Target Raise</span>
+                            <span>USD 250-300M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Status</span>
+                            <span>Pre-Development</span>
+                        </div>
+                    </div>
+                    <p>Edition-branded luxury hotel with 80 keys + 10 residences, leveraging prime oceanfront location
+                        with ultra-luxury positioning and high ADR potential.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>German Healthcare Real Estate</h4>
+                    <p class="opportunity-type">Hybrid Capital – Tokenised Debt</p>
+                    <div class="opportunity-details">
+                        <div class="detail-row">
+                            <span>Jurisdiction</span>
+                            <span>Luxembourg/Liechtenstein</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Target Raise</span>
+                            <span>EUR 500M (phased)</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Status</span>
+                            <span>Pre-Marketing</span>
+                        </div>
+                    </div>
+                    <p>Acquire and redevelop distressed hospital real estate in Germany, repurposed for private,
+                        residential, or wellness use with ESG-driven impact.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>Nickel-Backed Yield with ESG</h4>
+                    <p class="opportunity-type">Credit Linked Note – Critical Minerals</p>
+                    <div class="opportunity-details">
+                        <div class="detail-row">
+                            <span>Location</span>
+                            <span>Albania/Switzerland</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Target Raise</span>
+                            <span>EUR 20M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Coupon</span>
+                            <span>9.5% + Equity Option</span>
+                        </div>
+                    </div>
+                    <p>Finance Phase-1 Nickel Concentrate exports, secured by $749M JORC-verified reserves with >60%
+                        EBITDA margin and strategic offtakes.</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h4>22-Carat Gold Dore Trading</h4>
+                    <p class="opportunity-type">SBLC-Backed Trade Finance</p>
+                    <div class="opportunity-details">
+                        <div class="detail-row">
+                            <span>Jurisdiction</span>
+                            <span>Switzerland/EU</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Target Raise</span>
+                            <span>USD 33M</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Returns</span>
+                            <span>2% Monthly (24% APY)</span>
+                        </div>
+                    </div>
+                    <p>SBLC-backed gold trading with registered EU refinery. Fixed 2% monthly coupon on outstanding face
+                        value with full insurance and segregated accounts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="world-map-section">
+        <h2 class="section-title">Global Presence</h2>
+        <p class="section-subtitle">Our members access opportunities across four major global financial hubs</p>
+        <div class="map-container">
+            <div class="map-dot dot-singapore" data-location="Singapore"></div>
+            <div class="map-dot dot-london" data-location="London"></div>
+            <div class="map-dot dot-newyork" data-location="New York"></div>
+            <div class="map-dot dot-middleeast" data-location="Middle East"></div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Begin Your Journey with Wise Horizon</h2>
+        <p>Join an exclusive community of discerning investors shaping the future of global investment</p>
+        <div class="cta-contact">
+            Get in Touch: <a href="mailto:sc@wise-group.io">sc@wise-group.io</a>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Update the year to the current year -->
+        <p>&copy; <span id="current-year"></span> Wise Horizon. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.6;">Managed by Wise Capital Partners LLP</p>
+        <div class="disclaimer">
+            <p><strong>DISCLAIMER:</strong> This is intended solely for professional investors. This does not constitute
+                an offer or solicitation to invest. Wise Capital Partners LLP does not provide investment advice or
+                financial promotion and acts solely as an introducer. All investment opportunities are presented and
+                managed exclusively by originating third-party providers or affiliated Wise Group entities. Investors
+                must conduct their own due diligence and obtain independent legal, tax, and financial advice prior to
+                making any investment decision.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
