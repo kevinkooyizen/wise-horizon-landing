@@ -973,7 +973,7 @@ header {
     left: 0;
     width: 100%;
     padding: 20px 50px;
-    background: rgba(10, 25, 47, 0.8);
+    background: var(--primary-dark);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color-light);
     z-index: 100;
@@ -1003,4 +1003,8 @@ header nav a {
 
 header nav a:hover {
     color: var(--text-accent);
+}
+
+footer {
+    background: var(--primary-dark);
 }
