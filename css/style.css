@@ -1,19 +1,24 @@
 :root {
-    --primary-dark: #190e3e;
+    --primary-dark: #090282;
     --primary-medium: #3b1e5c;
     --primary-light: #433961;
     --primary-accent: #746b8c;
+    --primary-orange: #ef5252;
+    --primary-grey: #545454;
+    --secondary-blue: #d9edfc;
+    --secondary-beige: #fdf0e6;
+    --secondary-grey: #e0e0e0;
     --primary-dark-transparent-60: rgba(10, 25, 47, 0.6);
     --primary-dark-transparent-40: rgba(10, 25, 47, 0.4);
     --primary-dark-transparent-30: rgba(10, 25, 47, 0.3);
 
-    --text-primary: #ffffff;
+    --text-primary: #fdf0e6;
     --text-primary-rgb: 255, 255, 255;
     --text-secondary: rgba(var(--text-primary-rgb), 0.7);
     --text-secondary-75: rgba(var(--text-primary-rgb), 0.75);
     --text-muted: rgba(var(--text-primary-rgb), 0.5);
     --text-placeholder: rgba(var(--text-primary-rgb), 0.6);
-    --text-dark: #1a1a1a;
+    --text-dark: #545454;
     --text-accent: rgba(100, 181, 246, 0.9);
 
     --background-dark: #000000;
@@ -983,7 +988,7 @@ header {
 }
 
 header img {
-    height: 40px;
+    height: 60px;
 }
 
 .footer-logo {
