@@ -1,8 +1,5 @@
 :root {
     --primary-dark: #090282;
-    --primary-medium: #3b1e5c;
-    --primary-light: #433961;
-    --primary-accent: #746b8c;
     --primary-orange: #ef5252;
     --primary-grey: #545454;
     --secondary-blue: #d9edfc;
@@ -12,13 +9,13 @@
     --primary-dark-transparent-40: rgba(10, 25, 47, 0.4);
     --primary-dark-transparent-30: rgba(10, 25, 47, 0.3);
 
-    --text-primary: #fdf0e6;
+    --text-primary: var(--secondary-beige);
     --text-primary-rgb: 255, 255, 255;
     --text-secondary: rgba(var(--text-primary-rgb), 0.7);
     --text-secondary-75: rgba(var(--text-primary-rgb), 0.75);
     --text-muted: rgba(var(--text-primary-rgb), 0.5);
     --text-placeholder: rgba(var(--text-primary-rgb), 0.6);
-    --text-dark: #545454;
+    --text-dark: var(--primary-grey);
     --text-accent: rgba(100, 181, 246, 0.9);
 
     --background-dark: #000000;
@@ -45,7 +42,7 @@
     --shadow-color-button: rgba(var(--text-primary-rgb), 0.2);
     --shadow-color-button-hover: rgba(var(--text-primary-rgb), 0.3);
 
-    --button-text-color: var(--primary-medium);
+    --button-text-color: var(--primary-dark);
     --button-background-color: var(--text-primary);
     --button-background-hover-color: #e0e7ff;
 }
@@ -67,8 +64,8 @@ body {
 
 .hero {
     position: relative;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 50%, var(--primary-light) 100%);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-blue) 50%, var(--primary-orange) 100%);
+    color: var(--text-dark);
     padding: 140px 20px 100px;
     text-align: center;
     overflow: hidden;
@@ -85,6 +82,10 @@ body {
         radial-gradient(circle at 20% 50%, var(--shadow-color-primary-light) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, var(--shadow-color-dark) 0%, transparent 50%);
     animation: float 20s ease-in-out infinite;
+}
+
+.hero-logo {
+    width: 300px;
 }
 
 @keyframes float {
@@ -186,7 +187,7 @@ body {
 .orb1 {
     width: 400px;
     height: 400px;
-    background: var(--primary-medium);
+    background: var(--secondary-blue);
     top: 10%;
     left: 10%;
     animation-delay: 0s;
@@ -195,7 +196,7 @@ body {
 .orb2 {
     width: 300px;
     height: 300px;
-    background: var(--primary-light);
+    background: var(--secondary-beige);
     top: 50%;
     right: 10%;
     animation-delay: 5s;
@@ -204,7 +205,7 @@ body {
 .orb3 {
     width: 350px;
     height: 350px;
-    background: var(--primary-medium);
+    background: var(--secondary-blue);
     bottom: 10%;
     left: 50%;
     animation-delay: 10s;
@@ -334,14 +335,10 @@ body {
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(to bottom, var(--primary-light), var(--primary-accent));
+    background: linear-gradient(to bottom, var(--secondary-blue), var(--secondary-beige));
     transition: width 0.4s ease;
 }
 
-.vertical-card:hover::before {
-    width: 100%;
-    opacity: 0.1;
-}
 
 .vertical-card:hover {
     transform: translateY(-8px);
@@ -441,7 +438,7 @@ body {
 .step-number {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-dark));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -593,7 +590,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, var(--primary-light), var(--primary-accent));
+    background: linear-gradient(to right, var(--secondary-blue), var(--secondary-beige));
 }
 
 .team-card:hover {
@@ -607,7 +604,7 @@ body {
     height: 180px;
     border-radius: 50%;
     margin: 0 auto 25px;
-    background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));
+    background: linear-gradient(135deg, var(--secondary-blue), var(--secondary-beige));
     border: 4px solid var(--border-color-strong);
     display: flex;
     align-items: center;
@@ -681,7 +678,7 @@ body {
     position: absolute;
     width: 16px;
     height: 16px;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-accent));
+    background: linear-gradient(135deg, var(--secondary-blue), var(--secondary-beige));
     border-radius: 50%;
     border: 3px solid rgba(var(--text-primary-rgb), 0.8);
     box-shadow: 0 0 20px rgba(42, 82, 152, 0.8), 0 0 40px rgba(42, 82, 152, 0.4);
@@ -720,7 +717,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    background: linear-gradient(135deg, var(--primary-medium), var(--primary-light));
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary-beige));
     color: var(--text-primary);
     padding: 6px 14px;
     border-radius: 6px;
@@ -752,7 +749,7 @@ body {
 }
 
 .cta-section {
-    background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-blue) 100%);
     color: var(--text-primary);
     padding: 100px 20px;
     text-align: center;
@@ -865,7 +862,7 @@ footer p {
     margin: 20px auto 0;
     font-size: 0.8em;
     line-height: 1.6;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 /* Parallax sections - grouped together */
@@ -1060,4 +1057,20 @@ header nav.desktop-nav a:hover {
 
 footer {
     background: var(--primary-dark);
+}
+
+/* Remove margin-top from sections */
+/* This is to avoid the sections from overlapping with the header */
+#investment-themes::before,
+#privileges::before,
+#journey::before,
+#opportunities::before,
+#leadership::before,
+#contact::before {
+    display: block;
+    content: " ";
+    margin-top: -80px;
+    height: 80px;
+    visibility: hidden;
+    pointer-events: none;
 }
