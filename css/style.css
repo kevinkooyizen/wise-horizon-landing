@@ -488,7 +488,7 @@ body {
 
 .opportunities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 35px;
     max-width: 1200px;
     margin: 50px auto;
@@ -497,17 +497,22 @@ body {
 .opportunity-card {
     background: var(--background-card);
     backdrop-filter: blur(10px);
-    padding: 35px;
     border-radius: 15px;
     border: 1px solid var(--border-color-medium);
     transition: all 0.4s ease;
     position: relative;
+    display: flex;
+    overflow: hidden;
 }
 
 .opportunity-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px var(--shadow-color-primary-strong);
     border-color: var(--shadow-color-primary-light);
+}
+
+.opportunity-card-content {
+    padding: 35px;
 }
 
 .opportunity-card h4 {
@@ -554,13 +559,9 @@ body {
 }
 
 .opportunity-image {
-    width: calc(100% + 70px);
-    height: 200px;
+    width: 200px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 15px 15px 0 0;
-    margin-top: -35px;
-    margin-bottom: 20px;
-    margin-left: -35px;
 }
 
 .team-section {
