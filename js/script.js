@@ -49,3 +49,27 @@ window.addEventListener('load', () => {
 
     window.dispatchEvent(new Event('scroll'));
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarLinks = document.querySelectorAll('.sidebar .mobile-nav a');
+
+    if (hamburger && sidebar) {
+        hamburger.addEventListener('click', () => {
+            if (sidebar.style.width === '250px') {
+                sidebar.style.width = '0';
+            } else {
+                sidebar.style.width = '250px';
+            }
+        });
+    }
+
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (sidebar) {
+                sidebar.style.width = '0';
+            }
+        });
+    });
+});
