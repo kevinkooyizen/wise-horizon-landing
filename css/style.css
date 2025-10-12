@@ -29,7 +29,7 @@
 
     --border-color-light: rgba(var(--text-primary-rgb), 0.1);
     --border-color-medium: rgba(var(--text-primary-rgb), 0.15);
-    --border-color-strong: rgba(var(--text-primary-rgb), 0.2);
+    --border-color-strong: var(--primary-orange);
     --border-color-input: rgba(var(--text-primary-rgb), 0.5);
     --border-color-input-hover: rgba(var(--text-primary-rgb), 0.8);
 
