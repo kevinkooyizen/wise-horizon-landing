@@ -51,19 +51,19 @@
 }
 
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            line-height: 1.6;
-            background: var(--background-dark);
-            overflow-x: hidden;
-            padding-top: 80px;
-        }
+body {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: var(--background-dark);
+    overflow-x: hidden;
+    padding-top: 80px;
+}
 
         .hero {
             position: relative;
